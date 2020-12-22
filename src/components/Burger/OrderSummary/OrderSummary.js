@@ -1,31 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import Aux from "../../../hoc/Auxiliary";
 import Button from "../../UI/Button/Button";
 
-const orderSummary = (props) => {
-  const ingredientSummary = Object.keys(props.ingredients).map((igKey) => {
-    return (
-      <li key={igKey}>
-        <span style={{ textTransform: "capitalize" }}>{igKey}</span>:{" "}
-        {props.ingredients[igKey]}
-      </li>
-    );
-  });
-  return (
-    <Aux>
-      <h3>Your Order</h3>
-      <p>A scrumptious burger with the following ingredients:</p>
-      <ul>{ingredientSummary}</ul>
-      <strong>Total Price: {props.totalPrice.toFixed(2)}</strong>
-      <p>Continue to Checkout?</p>
-      <Button btnType="Danger" clicked={props.closeModal}>
-        Cancel
-      </Button>
-      <Button btnType="Success" clicked={props.purchaseContinued}>
-        Continue
-      </Button>
-    </Aux>
-  );
-};
+class OrderSummary extends Component {
+  // This could be a functional compoenent, used to debug for Improving Performance Lecture
+  componentDidUpdate() {
+    console.log("[Order Summary] Did Update");
+  }
 
-export default orderSummary;
+  render() {
+    const ingredientSummary = Object.keys(this.props.ingredients).map(
+      (igKey) => {
+        return (
+          <li key={igKey}>
+            <span style={{ textTransform: "capitalize" }}>{igKey}</span>:{" "}
+            {this.props.ingredients[igKey]}
+          </li>
+        );
+      }
+    );
+    return (
+      <Aux>
+        <h3>Your Order</h3>
+        <p>A scrumptious burger with the following ingredients:</p>
+        <ul>{ingredientSummary}</ul>
+        <strong>Total Price: {this.props.totalPrice.toFixed(2)}</strong>
+        <p>Continue to Checkout?</p>
+        <Button btnType="Danger" clicked={this.props.closeModal}>
+          Cancel
+        </Button>
+        <Button btnType="Success" clicked={this.props.purchaseContinued}>
+          Continue
+        </Button>
+      </Aux>
+    );
+  }
+}
+
+export default OrderSummary;
