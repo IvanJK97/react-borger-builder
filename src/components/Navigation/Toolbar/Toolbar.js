@@ -8,6 +8,7 @@ import classes from "./Toolbar.module.css";
 const toolbar = (props) => (
   <header className={classes.Toolbar}>
     <DrawerToggle click={props.toggleSideDrawer} />
+    {/* Use a div to control logo's height */}
     <div className={classes.Logo}>
       <Logo />
     </div>

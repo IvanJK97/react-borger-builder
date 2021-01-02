@@ -14,6 +14,7 @@ class Layout extends Component {
   };
 
   sideDrawerToggler = () => {
+    // If you plan on using previous state, do it like this bc of asynchronous
     this.setState((prevState) => {
       return { showSideDrawer: !prevState.showSideDrawer };
     });

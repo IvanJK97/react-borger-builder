@@ -25,10 +25,12 @@ class BurgerBuilder extends Component {
     purchasing: false,
   };
 
+  // Cannot buy a burger unless it has at least one ingredient
   updatePurchaseState() {
     const ingredients = {
       ...this.state.ingredients,
     };
+    // Map each ingredient key to its count value, then reduce that array to a single sum
     const sum = Object.keys(ingredients)
       .map((ingKey) => {
         return ingredients[ingKey];

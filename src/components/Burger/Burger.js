@@ -10,7 +10,8 @@ const burger = (props) => {
       ));
     })
     .reduce((prevArr, currArr) => {
-      // flatten array of arrays to single array
+      // Could also render an array of arrays of ingredients just fine
+      // Flatten array of arrays to single array; used to check if there's any ingredients on burger
       return prevArr.concat(currArr);
     }, []);
   //   console.log(transformedIngredients);
