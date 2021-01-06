@@ -7,7 +7,11 @@ import classes from "./Modal.module.css";
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     // If show changes in modal, then we will want to update order summary
-    return nextProps.show !== this.props.show;
+    // Also check children so that if spinner is rendered, it will change
+    return (
+      nextProps.show !== this.props.show ||
+      nextProps.children !== this.props.children
+    );
   }
 
   componentWillUpdate() {
