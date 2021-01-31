@@ -110,7 +110,6 @@ class BurgerBuilder extends Component {
     const queryString = queryParams.join("&");
     this.props.history.push({
       pathname: "/checkout",
-      // search: "?ingredients=" + JSON.stringify(this.state.ingredients),
       search: "?" + queryString,
     });
   };

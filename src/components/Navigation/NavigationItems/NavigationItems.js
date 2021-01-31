@@ -6,10 +6,8 @@ import classes from "./NavigationItems.module.css";
 const navigationItems = () => (
   <ul className={classes.NavigationItems}>
     {/* Can use active as a boolean props */}
-    <NavigationItem link="/" active>
-      Burger Builder
-    </NavigationItem>
-    <NavigationItem link="/">Checkout</NavigationItem>
+    <NavigationItem link="/">Burger Builder</NavigationItem>
+    <NavigationItem link="/orders">Orders</NavigationItem>
   </ul>
 );
 

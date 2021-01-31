@@ -7,18 +7,13 @@ import ContactData from "./ContactData/ContactData";
 class Checkout extends Component {
   state = {
     ingredients: {},
-    price: 0,
+    totalPrice: 0,
   };
 
   componentDidMount() {
     console.log(this.props);
     // Parse query params
     const query = new URLSearchParams(this.props.location.search);
-    // for (let param of query.entries()) {
-    //   this.setState({
-    //     ingredients: JSON.parse(param[1]),
-    //   });
-    // }
     const ingredients = {};
     let price = 0;
     for (let param of query.entries()) {
