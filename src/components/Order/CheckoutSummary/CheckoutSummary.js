@@ -8,9 +8,7 @@ const checkoutSummary = (props) => {
   return (
     <div className={classes.CheckoutSummary}>
       <h1>We hope it is SCRUM-tious</h1>
-      <div style={{ width: "100%", maxWidth: "450px", margin: "auto" }}>
-        <Burger ingredients={props.ingredients} />
-      </div>
+      <Burger ingredients={props.ingredients} />
       <Button clicked={props.checkoutCancelled} btnType="Danger">
         Cancel
       </Button>
