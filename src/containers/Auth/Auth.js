@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
@@ -41,6 +42,13 @@ class Auth extends Component {
     },
     isSignup: true,
   };
+
+  componentDidMount() {
+    if (!this.props.buildingBurger && this.props.authRedirectPath !== "/") {
+      // Not building a burger, so set authRedirectPath back to '/'
+      this.props.onSetAuthRedirectPath();
+    }
+  }
 
   checkValidity = (value, rules) => {
     let isValid = true;
@@ -129,10 +137,17 @@ class Auth extends Component {
     let errorMessage = null;
     if (this.props.error) {
       // Use Firebase's error message
-      errorMessage = <p>{this.props.error}</p>;
+      errorMessage = <p>{this.props.error.message}</p>;
+    }
+
+    let authRedirect = null;
+    // Redirect to burger builder page if authenticated and haven't start building burger (use a dynamic authRedirectPath)
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
     return (
       <div className={classes.Auth}>
+        {authRedirect}
         <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType="Success">Submit</Button>
@@ -150,12 +165,16 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
+    buildingBurger: state.burgerBuilder.building,
+    authRedirectPath: state.auth.authRedirectPath,
   };
 };
 
 const mapActionsToProps = {
   onAuth: (email, password, isSignup) =>
     actions.auth(email, password, isSignup),
+  onSetAuthRedirectPath: () => actions.setAuthRedirectPath("/"),
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Auth);

@@ -9,4 +9,4 @@ export {
   fetchOrdersStart,
   fetchOrders,
 } from "./order";
-export { auth } from "./auth";
+export { auth, logout, setAuthRedirectPath } from "./auth";

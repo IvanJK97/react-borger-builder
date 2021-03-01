@@ -3,7 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   orders: [],
   loading: false,
-  purchased: false,
+  purchased: false, // Used in Checkout.js to see if we need to redirect
 };
 
 // Not using utility updateObject or refactoring here bc I like this better

@@ -5,6 +5,7 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
+  authRedirectPath: "/", // Used to see where to redirect after auth page, used in BurgerBuilder.js and Auth.js (set to checkout if building state is true)
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: action.error,
         loading: false,
+      };
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        token: null,
+        userId: null,
+      };
+    case actionTypes.SET_AUTH_REDIRECT_PATH:
+      return {
+        ...state,
+        authRedirectPath: action.path,
       };
     default:
       return state;
