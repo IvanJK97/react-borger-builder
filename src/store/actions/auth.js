@@ -80,7 +80,7 @@ export const auth = (email, password, isSignup) => {
     axios
       .post(url, authData)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         localStorage.setItem("token", response.data.idToken);
         // Calculate expiration date in milliseconds so that it's a static value
         const expirationDate = new Date(
