@@ -11,7 +11,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions/"; // Need last slash but don't need index.js after that
 import axios from "../../axios-orders"; // Using customized axios instance
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
   state = {
     purchasing: false,
   };
