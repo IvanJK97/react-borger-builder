@@ -1,3 +1,5 @@
+App deployed on Firebase to: https://react-burger-builder-72213.web.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
